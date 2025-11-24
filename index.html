@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gautam Arora - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -273,13 +273,19 @@
         let showingPhone = false;
 
         function checkOrientation() {
-            const mobile = window.innerWidth < 768;
+            const mobile = window.innerWidth < 1024;
             const rotateMsg = document.getElementById('rotate-message');
             const mainContent = document.getElementById('main-content');
             
-            if (mobile && window.innerHeight > window.innerWidth) {
-                rotateMsg.classList.remove('hidden');
-                mainContent.classList.add('hidden');
+            if (mobile) {
+                const isPortrait = window.innerHeight > window.innerWidth;
+                if (isPortrait) {
+                    rotateMsg.classList.remove('hidden');
+                    mainContent.classList.add('hidden');
+                } else {
+                    rotateMsg.classList.add('hidden');
+                    mainContent.classList.remove('hidden');
+                }
             } else {
                 rotateMsg.classList.add('hidden');
                 mainContent.classList.remove('hidden');
